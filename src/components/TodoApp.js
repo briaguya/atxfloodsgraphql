@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react'
 import TodoListFooter from './TodoListFooter'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 import gql from 'graphql-tag'
 
 import { connect } from 'react-redux'
@@ -14,7 +14,6 @@ class TodoApp extends React.Component {
     renameTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
-    router: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     filter: PropTypes.string.isRequired,
     setFilter: PropTypes.func.isRequired,
