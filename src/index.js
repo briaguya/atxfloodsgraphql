@@ -1,20 +1,15 @@
 import React from 'react'
-import { render } from 'react-dom'
-import TodoApp from './components/TodoApp'
-
+import ReactDOM from 'react-dom'
+import App from './components/App'
+import CreatePost from './components/CreatePost'
 import CreateUser from './components/CreateUser'
 import LoginUser from './components/LoginUser'
-
 import { Router, Route, browserHistory } from 'react-router'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import 'tachyons'
 
-import './style.css'
-
-// Paste your endpoint for the Simple API here.
-// Info: https://github.com/graphcool-examples/react-apollo-todo-example#2-create-graphql-api-with-graphcool
-const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/cj1sgcb2r1lp70109cqcaq449' })
+const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/cj1xwtydi30li0194txhhmjlz' })
 
 networkInterface.use([{
   applyMiddleware (req, next) {
@@ -30,38 +25,17 @@ networkInterface.use([{
   },
 }])
 
-const client = new ApolloClient({
-  networkInterface,
-})
+const client = new ApolloClient({ networkInterface })
 
-function filter (previousState = 'SHOW_ALL', action) {
-  if (action.type === 'SET_FILTER') {
-    return action.filter
-  }
-
-  return previousState
-}
-
-const store = createStore(
-  combineReducers({
-    filter,
-    apollo: client.reducer(),
-  }),
-  // initial state
-  {},
-  compose(
-    applyMiddleware(client.middleware()),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-)
-
-render(
-  <ApolloProvider store={store} client={client}>
-    <Router>
-        <Route path='/' component={TodoApp} />
-        <Route path='login' component={LoginUser} />
-        <Route path='signup' component={CreateUser} />
+ReactDOM.render((
+  <ApolloProvider client={client}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App} />
+      <Route path='create' component={CreatePost} />
+      <Route path='login' component={LoginUser} />
+      <Route path='signup' component={CreateUser} />
     </Router>
-  </ApolloProvider>,
+  </ApolloProvider>
+  ),
   document.getElementById('root')
 )

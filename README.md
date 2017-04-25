@@ -1,64 +1,36 @@
-# react-apollo-todo-example
+# react-apollo-email-example
+![](http://i.imgur.com/CH44AZF.png)
 
-* [React](https://facebook.github.io/react/): Frontend framework for building user interfaces
-* [Apollo Client](https://github.com/apollographql/apollo-client): Fully-featured, production ready caching GraphQL client
-* [Graphcool](https://www.graph.cool): Flexible backend platform combining GraphQL + AWS Lambda
+Try the [hosted version](http://apollo-email.netlify.com).
 
-## Example ([Live demo](https://demo-react-apollo-todo-example.netlify.com) & [GraphQL Playground](https://api.graph.cool/simple/v1/cj1nq71xyfabv0199bp3a7hhf))
+## Getting Started
 
-![](http://imgur.com/1PkNnTx.gif)
+After [downloading this example](https://github.com/graphcool-examples/react-apollo-email-example/archive/master.zip) please follow the steps detailed in [the online guide](https://www.graph.cool/docs/tutorials/react-apollo-email-oopheesaj9).
 
-## Quickstart
+A short summary is given below.
 
-For more information on how to get started [refer to the full react-apollo-todo tutorial](https://www.graph.cool/docs/quickstartrt/react-apollo-todo-example).
+### 1. Create an account
 
-### 1. Clone example repository
+To run this example, please create a [graph.cool](http://graph.cool) account and **copy your endpoint**. This shouldn't take longer than a minute. We promise!
 
-```sh
-git clone https://github.com/graphcool-examples/react-apollo-todo-example.git
-cd react-apollo-todo-example
-```
+![](http://i.imgur.com/ytXDR4B.gif)
 
-### 2. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
+### 2. Configure app data endpoint
 
-```sh
-# Install Graphcool CLI
-npm install -g graphcool
-
-# Create a new project based on the Todo schema
-graphcool init --url graph.cool/schema/todo 
-```
-
-This creates a GraphQL API for the following schema:
-
-```graphql
-type Todo {
-  text: String!
-  complete: Boolean!
-}
-```
-
-### 3. Connect the app with your GraphQL API
-
-Copy the `Simple API` endpoint to `./src/index.js` as the `uri` argument in the `createNetworkInterface` call:
+Open `src/index.js` and paste your endpoint to the following line:
 
 ```js
-// replace `__SIMPLE_API_ENDPOINT__` with the endpoint from the previous step
-const networkInterface = createNetworkInterface({ uri: '__SIMPLE_API_ENDPOINT__' })
+const networkInterface = createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__' })
 ```
 
-### 4. Install depdendencies & run locally
+### 3. Run the example
+
+You're done configuring the example application. Please run the following command and open [localhost:3000](http://localhost:3000) in your browser. Have fun exploring! 🎉
 
 ```sh
-yarn install
-yarn start # open http://localhost:3000 in your browser
+npm install
+npm start
 ```
-
-## Next steps
-
-* [Advanced GraphQL features](x)
-* [Authentication & Permissions](x)
-* [Implementing business logic with serverless functions](x)
 
 
 ## Help & Community [![Slack Status](https://slack.graph.cool/badge.svg)](https://slack.graph.cool)
