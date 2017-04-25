@@ -31,6 +31,7 @@ const FeedQuery = gql`query {
     imageUrl
     description
     number
+    numberTripled
   }
 }`
 

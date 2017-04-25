@@ -19,7 +19,8 @@ export default class Post extends React.Component {
         />
         <div className='pt3'>
           Description: {this.props.post.description}&nbsp;<br/>
-          Number: {this.props.post.number}
+          Number: {this.props.post.number} <br/>
+          Tripled: {this.props.post.numberTripled}
         </div>
       </div>
     )
