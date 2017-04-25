@@ -30,6 +30,7 @@ const FeedQuery = gql`query {
     id
     imageUrl
     description
+    number
   }
 }`
 

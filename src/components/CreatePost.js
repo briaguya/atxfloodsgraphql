@@ -14,6 +14,7 @@ class CreatePost extends React.Component {
   state = {
     description: '',
     imageUrl: '',
+    number: '',
   }
 
   render () {
@@ -42,6 +43,12 @@ class CreatePost extends React.Component {
             placeholder='Image Url'
             onChange={(e) => this.setState({imageUrl: e.target.value})}
           />
+          <input
+            className='w-100 pa3 mv2'
+            value={this.state.number}
+            placeholder='Integer number'
+            onChange={(e) => this.setState({number: parseInt(e.target.value)})}
+          />
           {this.state.imageUrl &&
             <img src={this.state.imageUrl} role='presentation' className='w-100 mv3' />
           }
@@ -54,8 +61,8 @@ class CreatePost extends React.Component {
   }
 
   handlePost = () => {
-    const {description, imageUrl} = this.state
-    this.props.mutate({variables: {description, imageUrl}})
+    const {description, imageUrl, number} = this.state
+    this.props.mutate({variables: {description, imageUrl, number}})
       .then(() => {
         this.props.router.replace('/')
       })
@@ -63,8 +70,8 @@ class CreatePost extends React.Component {
 }
 
 const createPost = gql`
-  mutation ($description: String!, $imageUrl: String!) {
-    createPost(description: $description, imageUrl: $imageUrl) {
+  mutation ($description: String!, $imageUrl: String!, $number: Int!) {
+    createPost(description: $description, imageUrl: $imageUrl, number: $number) {
       id
     }
   }
