@@ -5,7 +5,7 @@ import TodoApp from './components/TodoApp'
 import CreateUser from './components/CreateUser'
 import LoginUser from './components/LoginUser'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router, Route, browserHistory } from 'react-router'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
@@ -58,11 +58,9 @@ const store = createStore(
 render(
   <ApolloProvider store={store} client={client}>
     <Router>
-      <div>
         <Route path='/' component={TodoApp} />
         <Route path='login' component={LoginUser} />
         <Route path='signup' component={CreateUser} />
-      </div>
     </Router>
   </ApolloProvider>,
   document.getElementById('root')
